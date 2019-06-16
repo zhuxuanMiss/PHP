@@ -8,5 +8,18 @@
 // +----------------------------------------------------------------------
 // | Author: 流年 <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
+use think\facade\Config;
 // 应用公共文件
+function msgReturn($code, $data=array()) {
+	if (empty($data)) {
+		$resReturn = ['code'=>$code, 'msg'=>getMessage($code)];
+	} else {
+		$resReturn = ['code'=>$code, 'msg'=>getMessage($code), 'data'=>$data];
+	}
+	return json_encode($resReturn);
+}
+
+function getMessage($code){
+	$configs = Config::get('message.info');
+	return array_key_exists($code, $configs) ? $configs[$code] : $code;  
+}

@@ -2,26 +2,18 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2019 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-// +----------------------------------------------------------------------
-// | Trace设置 开启调试模式后有效
-// +----------------------------------------------------------------------
+use app\ExceptionHandle;
+use app\Request;
+
+// 容器Provider定义文件
 return [
-    // 内置Html 支持扩展
-    'type' => 'Html',
-    'trace_tabs' =>  [
-         'base'=>'基本',
-         'file'=>'文件',
-         'info'=>'流程',
-         'error'=>'错误',
-         'sql'=>'SQL',
-         'debug'=>'调试',
-         'user'=>'用户'
-     ]
+    'think\Request'          => Request::class,
+    'think\exception\Handle' => ExceptionHandle::class,
 ];
